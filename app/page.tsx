@@ -7,6 +7,7 @@ export default function Home() {
       <Link href="/create">
         <button>ルーチンを登録する</button>
       </Link>
+      <Link href="/routines">ルーチン一覧</Link>
     </>
   );
 }

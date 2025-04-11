@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Create() {
@@ -38,6 +39,7 @@ export default function Create() {
   return (
     <div>
       <h1>ルーチン登録ページ</h1>
+      <Link href="/routines">ルーチン一覧</Link>
       <form onSubmit={handleSubmit}>
         <div>
           <label>タイトル：</label>
