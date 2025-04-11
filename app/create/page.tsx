@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function Create() {
   const [title, setTitle] = useState<string>("");
-  const [period, setPeriod] = useState<number | "">();
+  const [period, setPeriod] = useState<number | "">("");
   const [noticeText, setNoticeText] = useState<string>("");
   const [message, setMessage] = useState<string>("");
 
@@ -21,7 +21,7 @@ export default function Create() {
         title: title,
         period: period,
         start_date: new Date().toISOString().split("T")[0],
-        noticeText: noticeText,
+        notice_text: noticeText,
       }),
     });
 
@@ -51,8 +51,12 @@ export default function Create() {
         <div>
           <label>周期（日）：</label>
           <input
+            type="number"
             value={period}
-            onChange={(e) => setPeriod(Number(e.target.value))}
+            onChange={(e) => {
+              const val = e.target.value;
+              setPeriod(val === "" ? "" : Number(val));
+            }}
             required
           />
         </div>
