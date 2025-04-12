@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useParams } from "next/navigation";
+import Link from "next/link";
 
 type Routine = {
   id: string;
@@ -90,7 +91,11 @@ export default function Update() {
             />
           </div>
 
-          <div className="text-right">
+          <div className="flex justify-end gap-3">
+            <Button asChild className="bg-blue-400">
+              <Link href="/routines">戻る</Link>
+            </Button>
+
             <Button type="submit">更新</Button>
           </div>
         </form>
