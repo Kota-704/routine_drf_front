@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import Header from "@/components/ui/layout/header";
 
 type Routine = {
   id: string;
@@ -22,17 +24,26 @@ export default function RoutinePage() {
 
   return (
     <>
-      <h1>ルーチン一覧</h1>
-      <ul>
-        {routines.map((routine) => (
-          <li key={routine.id}>
-            <strong>{routine.title}</strong> ({routine.period}日ごと)
-            <br />
-            開始日: {routine.start_date} <br />
-            内容: {routine.notice_text}
-          </li>
-        ))}
-      </ul>
+      <div className="mx-auto max-w-7xl">
+        <Header />
+        <h1 className="text-4xl">ルーチン一覧</h1>
+
+        <ul className="mt-6">
+          {routines.map((routine, index) => (
+            <div key={index}>
+              <li key={routine.id}>
+                <hr />
+                <strong>{routine.title}</strong> ({routine.period}日ごと)
+                <br />
+                開始日: {routine.start_date} <br />
+                内容: {routine.notice_text}
+                <Link href="/update/{routine.id}">更新</Link>
+              </li>
+            </div>
+          ))}
+        </ul>
+        <hr />
+      </div>
     </>
   );
 }

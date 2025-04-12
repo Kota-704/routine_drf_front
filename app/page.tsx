@@ -1,13 +1,15 @@
 import Link from "next/link";
+import Header from "@/components/ui/layout/header";
 
 export default function Home() {
   return (
-    <>
-      <h1>ルーチン登録アプリ</h1>
-      <Link href="/create">
-        <button>ルーチンを登録する</button>
-      </Link>
-      <Link href="/routines">ルーチン一覧</Link>
-    </>
+    <div className="mx-auto max-w-7xl">
+      <Header />
+      <h1 className="text-4xl">ルーチン登録アプリ</h1>
+      <div className="flex flex-col items-center gap-3 mt-6">
+        <Link href="/routines">ルーチン一覧を見る</Link>
+        <Link href="/create">ルーチンを登録する</Link>
+      </div>
+    </div>
   );
 }

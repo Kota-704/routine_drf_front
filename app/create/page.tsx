@@ -1,8 +1,10 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import Header from "@/components/ui/layout/header";
 
 export default function Create() {
   const [title, setTitle] = useState<string>("");
@@ -37,45 +39,50 @@ export default function Create() {
   };
 
   return (
-    <div>
-      <h1>ルーチン登録ページ</h1>
-      <Link href="/routines">ルーチン一覧</Link>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>タイトル：</label>
-          <input
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
+    <>
+      <div className="mx-auto max-w-7xl">
+        <Header />
+        <h1 className="text-3xl">ルーチン登録ページ</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="mt-6">
+            <label>タイトル：</label>
+            <Input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+          </div>
 
-        <div>
-          <label>周期（日）：</label>
-          <input
-            type="number"
-            value={period}
-            onChange={(e) => {
-              const val = e.target.value;
-              setPeriod(val === "" ? "" : Number(val));
-            }}
-            required
-          />
-        </div>
+          <div className="mt-4">
+            <label>周期（日）：</label>
+            <Input
+              type="number"
+              value={period}
+              onChange={(e) => {
+                const val = e.target.value;
+                setPeriod(val === "" ? "" : Number(val));
+              }}
+              required
+            />
+          </div>
 
-        <div>
-          <label>通知内容：</label>
-          <input
-            value={noticeText}
-            onChange={(e) => setNoticeText(e.target.value)}
-            required
-          />
-        </div>
+          <div className="mt-4">
+            <label>通知内容：</label>
+            <Input
+              value={noticeText}
+              onChange={(e) => setNoticeText(e.target.value)}
+              required
+            />
+          </div>
+          <div className="text-right">
+            <Button type="submit" className="mt-4">
+              登録
+            </Button>
+          </div>
+        </form>
 
-        <button type="submit">登録</button>
-      </form>
-
-      {message && <p>{message}</p>}
-    </div>
+        {message && <p>{message}</p>}
+      </div>
+    </>
   );
 }
