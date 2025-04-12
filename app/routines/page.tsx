@@ -48,10 +48,10 @@ export default function RoutinePage() {
                 内容: {routine.notice_text}
               </div>
               <div className="button_container flex gap-2">
-                <Link href="/update/{routine.id}">
+                <Link href={`/update/${routine.id}`}>
                   <Button>更新</Button>
                 </Link>
-                <Link href="/delete/{routine.id}">
+                <Link href={`/update/${routine.id}`}>
                   <Button variant="destructive">削除</Button>
                 </Link>
               </div>
