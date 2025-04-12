@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Header from "@/components/ui/layout/header";
+import Link from "next/link";
 
 export default function Create() {
   const [title, setTitle] = useState<string>("");
@@ -74,8 +75,11 @@ export default function Create() {
               required
             />
           </div>
-          <div className="text-right">
-            <Button type="submit" className="mt-4">
+          <div className="flex gap-2 mt-4 justify-end">
+            <Link href="routines/">
+              <Button variant="destructive">戻る</Button>
+            </Link>
+            <Button type="submit" className="">
               登録
             </Button>
           </div>

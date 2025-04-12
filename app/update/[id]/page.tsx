@@ -93,7 +93,7 @@ export default function Update() {
 
               <div className="text-right">
                 <Button type="submit" className="mt-4">
-                  登録
+                  更新
                 </Button>
               </div>
             </div>

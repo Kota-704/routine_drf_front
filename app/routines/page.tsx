@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Header from "@/components/ui/layout/header";
+import { Button } from "@/components/ui/button";
 
 type Routine = {
   id: string;
@@ -28,21 +29,35 @@ export default function RoutinePage() {
         <Header />
         <h1 className="text-4xl">ルーチン一覧</h1>
 
-        <ul className="mt-6">
-          {routines.map((routine, index) => (
-            <div key={index}>
-              <li key={routine.id}>
-                <hr />
+        <div className="text-right my-6">
+          <Link href="create/">
+            <Button>＋ 新規作成</Button>
+          </Link>
+        </div>
+
+        <ul className="p-3">
+          {routines.map((routine) => (
+            <li
+              key={routine.id}
+              className="flex items-center justify-between border p-3"
+            >
+              <div className="">
                 <strong>{routine.title}</strong> ({routine.period}日ごと)
                 <br />
                 開始日: {routine.start_date} <br />
                 内容: {routine.notice_text}
-                <Link href="/update/{routine.id}">更新</Link>
-              </li>
-            </div>
+              </div>
+              <div className="button_container flex gap-2">
+                <Link href="/update/{routine.id}">
+                  <Button>更新</Button>
+                </Link>
+                <Link href="/delete/{routine.id}">
+                  <Button variant="destructive">削除</Button>
+                </Link>
+              </div>
+            </li>
           ))}
         </ul>
-        <hr />
       </div>
     </>
   );
